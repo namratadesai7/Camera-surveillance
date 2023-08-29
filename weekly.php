@@ -56,19 +56,23 @@ $date = date('Y-m-d',strtotime('Monday this week'));
                     <th style="width: 15%;">Action</th>
                 </tr>
             <?php                 
-                $sql="SELECT a.id,b.id as wid,a.NVR,a.NVR_Name,b.NVR_id,b.Status,format(b.date,'yyyy-MM-dd') as date,b.Remark,b.Days FROM NVR_Master a join Weekly_NVR b on a.id=b.NVR_id where b.date='$date'";   
+                $sql="SELECT * FROM NVR_Master";   
                 $run=sqlsrv_query($conn,$sql);
                 while($row=sqlsrv_fetch_array($run,SQLSRV_FETCH_ASSOC ))
                 {
+                    $sql1= "SELECT * FROM Weekly_NVR WHERE date = '$date' AND NVR_id= '".$row['id']."' ";
+                    $run1=sqlsrv_query($conn,$sql1);
+                    $row1=sqlsrv_fetch_array($run1,SQLSRV_FETCH_ASSOC);
+
             ?>
                 <tr>
                     <td><input type="text" id="sr" name="nvrId[]" value="<?php echo $row['id']?>"></td>
                     <td><input type="text" name="nvr[]" value="<?php echo $row['NVR']?>"></td>
                     <td><input type="text" name="nvrName[]" value="<?php echo $row['NVR_Name']?>"></td>
-                    <td><input type="date" name="date[]" value="<?php echo $row['date'] ?>" readonly></td>                       
-                    <td><input type="text" value="<?php echo $row['Status'] ?>"></td>
-                    <td><input type="text" value="<?php echo $row['Remark'] ?>"></td>
-                    <td align="center"><button= type="button" class="btn btn-primary btn-sm mb-0 addweek " id="<?php echo $row['NVR_id'] ?>">Add</button></td>
+                    <td><input type="date" name="date[]" value="<?php echo $date ?>" readonly></td>                       
+                    <td><input type="text" value="<?php echo $row1['Status'] ?>"></td>
+                    <td><input type="text" value="<?php echo $row1['Remark'] ?>"></td>
+                    <td align="center"><button= type="button" class="btn btn-primary btn-sm mb-0 addweek " id="<?php echo $row1['NVR_id'] ?>">Add</button></td>
                 </tr>
             <?php }  ?>               
             </table>

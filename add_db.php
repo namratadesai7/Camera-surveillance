@@ -11,7 +11,7 @@ if(isset($_POST['empid'])){
     $row=sqlsrv_fetch_array($run,SQLSRV_FETCH_ASSOC);
 
     if($pwd==$row['password']){
-        $_SESSION['Sr']= $row['id'];
+        $_SESSION['Sr']= $row['Sr'];
         $_SESSION['empid']=$row['employee_id'];
         $_SESSION['name']=$row['user_name'];
        

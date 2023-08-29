@@ -17,7 +17,7 @@ include('dbcon.php');
     <title>Dashboard</title>
 </head>
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="cards">
             <div class="card-single">
                     <div>

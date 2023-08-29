@@ -60,7 +60,7 @@ session_start();
             </ul>
     
     
-          </div>
+        </div>
    </div>
    <div class="main-content">
         <header>
@@ -79,7 +79,7 @@ session_start();
             <div class="user-wrapper">
                 <img src="images/abcd.jpg" width="40px" height="30px" alt="">
                 <div>
-                     <h4><?php echo $_SESSION['name']?></h4> 
+                       
                     <small >Super admin</small>
                 </div>
             </div>
